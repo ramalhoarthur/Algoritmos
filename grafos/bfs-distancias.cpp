@@ -18,8 +18,8 @@ vector<int> bfs (vector<vector<int>> &grafo, int origem, int n) {
               fila.pop();
 
               for(int vizinho : grafo[atual]) {
-                     if(!visitados[atual]) {
-                            visitados[atual] = true;
+                     if(!visitados[vizinho]) {
+                            visitados[vizinho] = true;
                             distancias[vizinho] = distancias[atual] + 1;
                             fila.push(vizinho);
                      }

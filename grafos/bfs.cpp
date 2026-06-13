@@ -15,8 +15,8 @@ void bfs (vector<vector<int>> &grafo, int origem, int n) {
               fila.pop();
 
               for(int vizinho : grafo[atual]) {
-                     if(!visitados[atual]) {
-                            visitados[atual] = true;
+                     if(!visitados[vizinho]) {
+                            visitados[vizinho] = true;
                             fila.push(vizinho);
                      }
               }
