@@ -1,43 +1,33 @@
 #include <bits/stdc++.h>
 using namespace std;
-typedef vector<int> vi;
 
-class Grafo_Matriz {
-       private: 
-              int v;
-              vector<vi> matriz;
-       
-       public:
-              //Método Construtor:
-              Grafo_Matriz(int v) {
-                     this->v = v;
-                     matriz.resize(v, vi(v));
-              }
-              void adicionarAresta (int x, int y) {
-                     matriz[x][y] = 1;
-                     matriz[y][x] = 1;
-              }
-              void imprimirGrafo () {
-                     int i, j;
-                     for (i=0 ; i<v ; i++) {
-                            for (j=0 ; j < v ; j++) {
-                                   cout << matriz[i][j] << " ";
-                            }
-                            cout << "\n";
-                     }
-              }
-};
+typedef vector<int> vi;
 
 int main () {
        ios::sync_with_stdio(false);
        cin.tie(nullptr);
 
-       Grafo_Matriz grafo(4);
-       
-       grafo.adicionarAresta(0, 0);
-       grafo.adicionarAresta(3, 2);
-       grafo.adicionarAresta(2, 2);
-       
-       grafo.imprimirGrafo();
+       //Número de vértices(n) e quantidade de arestas(m):
+       int n, m;
+       cin >> n >> m;
+
+       //Grafo representado por matriz de adjacências:
+       vector<vi> grafo_matriz;
+       grafo_matriz.resize(n+1, vi(n+1));
+
+       for(int i=0 ; i<m ; i++) {
+              int u, v;
+              cin >> u >> v;
+
+              grafo_matriz[u][v] = 1;
+              grafo_matriz[v][u] = 1;
+       }       
+
+       for (int i=1 ; i<n+1 ; i++) {
+              for (int j=1 ; j < n+1 ; j++) {
+                     cout << grafo_matriz[i][j] << " ";
+              }
+              cout << "\n";
+       }
        return 0;
 }
