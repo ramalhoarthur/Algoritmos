@@ -1,42 +1,36 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Grafo_Lista {
-       int v;
-       list<int> *lista;
-
-       public:
-              Grafo_Lista (int v) {
-                     this->v = v;
-                     lista = new list<int>[v];
-              }
-
-              void adicionarAresta(int x, int y) {
-                     lista[x].push_back(y);
-                     lista[y].push_back(x);                     
-              }
-
-              void printGrafo () {
-                     for(int i=0 ; i < v ; i++) {
-                            cout << "Vértice " << i << "->";
-                            for(int adj:lista[i]) {
-                                   cout << adj << ", ";
-                            }
-                            cout  << "\n";
-                     }
-              }
-};
+typedef vector<int> vi;
 
 int main () {
        ios::sync_with_stdio(false);
        cin.tie(nullptr);
 
-       Grafo_Lista grafo(4);
+       //Número de Vértices(n) e quantidade de arestas(m):
+       int n, m;
+       cin >> n >> m;
 
-       grafo.adicionarAresta(0, 0);
-       grafo.adicionarAresta(3, 2);
-       grafo.adicionarAresta(2, 2);
+       //Grafo representado por uma lista de adjacência:
+       vector<vi> grafo;
+       grafo.resize(n+1);
        
-       grafo.printGrafo();
+       for(int i=0 ; i<m ; i++) {
+              int u, v;
+              cin >> u >> v;
+
+              grafo[u].push_back(v);
+              grafo[v].push_back(u);
+       }
+
+       //Laço para imprimir a lista de adjacência:
+       for(int i=1 ; i < n+1 ; i++) {
+                            cout << "Vértice " << i << "->";
+                            for(int adj:grafo[i]) {
+                                   cout << adj << ", ";
+                            }
+                            cout  << "\n";
+                     }
+
        return 0;
 }
