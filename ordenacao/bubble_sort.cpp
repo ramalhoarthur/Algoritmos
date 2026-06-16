@@ -3,7 +3,7 @@ using namespace std;
 
 typedef vector<int> vi;
 
-vi bubble_sort (vi &lista) {
+void bubble_sort (vi &lista) {
        bool troca;
        for(int i = 0 ; i < lista.size()-1 ; i++) {
               for(int j = 0 ; j < lista.size() - i - 1 ; j++) {
@@ -17,11 +17,10 @@ vi bubble_sort (vi &lista) {
               }
               if(!troca) break;
        }
-       return lista;
 }
 
 int main () {
-       vi lista, lista_ordenada;
+       vi lista;
        int tam;
        cin >> tam;
        for(int i = 0 ; i < tam ; i++) {
@@ -30,7 +29,7 @@ int main () {
               lista.push_back(num);
        }
 
-       lista_ordenada = bubble_sort(lista);
+       bubble_sort(lista);
        for(int i=0 ; i < tam ; i++) {
               cout << lista[i] << " ";
        }
