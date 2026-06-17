@@ -7,11 +7,8 @@ void bubble_sort (vi &lista) {
        bool troca;
        for(int i = 0 ; i < lista.size()-1 ; i++) {
               for(int j = 0 ; j < lista.size() - i - 1 ; j++) {
-
                      if(lista[j] > lista[j+1]) {
-                            int aux  = lista[j];
-                            lista[j] = lista[j+1];
-                            lista[j+1] = aux;
+                            swap(lista[j], lista[j+1]);
                             troca = true;
                      }
               }
